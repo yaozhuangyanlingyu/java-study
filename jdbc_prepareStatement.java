@@ -8,7 +8,7 @@ import jdbc.util.jdbcUtil;
 
 /**
  * PreparedStatement可以解决SQL注入问题
- * @author Administrator
+ * @author yaoxf
  * @date 2019/05/10
  * 
  */

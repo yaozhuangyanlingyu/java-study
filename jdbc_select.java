@@ -5,6 +5,11 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
 
+/**
+ * jdbcÊý¾Ý¿â²éÑ¯
+ * @author yaoxf
+ *
+ */
 public class jdbc_select {
 	public static void main_backup(String[] args) {
 		try {

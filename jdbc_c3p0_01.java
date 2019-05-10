@@ -8,6 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
 
+/**
+ * c3p0¡¨Ω”≥ÿ¡∑œ∞
+ * @author yaoxf
+ *
+ */
 public class jdbc_c3p0_01 {
 	private static final String dbDriver;
 	private static final String dbUrl;

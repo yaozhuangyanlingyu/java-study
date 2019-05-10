@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 /**
  * jdbcÔöÉ¾¸Ä²é
- * @author Administrator
+ * @author yaoxf
  *
  */
 public class jdbc_crud {
