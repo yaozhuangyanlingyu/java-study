@@ -19,7 +19,7 @@ public class jdbcUtil {
 		Properties props = new Properties();
 
 		// 通常使用类的加载器方式进行获取
-		InputStream is = jdbcUtil.class.getClassLoader().getResourceAsStream("jdbc/properties");
+		InputStream is = jdbcUtil.class.getClassLoader().getResourceAsStream("jdbc/config/config-dev.ini");
 		try {
 			props.load(is);
 		} catch(IOException e) {

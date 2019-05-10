@@ -9,9 +9,14 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-public class jdbc_CRUD {
+/**
+ * jdbc增删改查
+ * @author Administrator
+ *
+ */
+public class jdbc_crud {
 	
-	public static void main(String[] args) {
+	public static void main_backup(String[] args) {
 		// 插入数据操作
 		// insertData();
 		

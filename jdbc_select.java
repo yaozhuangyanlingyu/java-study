@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 public class jdbc_select {
-	public static void demo1(String[] args) {
+	public static void main_backup(String[] args) {
 		try {
 			// 1.加载驱动
 			// DriverManager.RegisterDriver(new Driver());	// 会导致驱动注册两次
