@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 引入数据库配置 --><!-- 
+	<properties resource="db.properties"></properties> -->
+	<properties resource="db.properties"></properties>
+
+	<!-- 定义类型别名 -->
+	<typeAliases>
+		<!-- 单独映射 -->
+		<typeAlias type="com.mybatis.pojo.Blog" alias="Blog" />
+
+		<!-- 包扫描形式 -->
+		<!-- <package name="com.mybatis.pojo" /> -->
+	</typeAliases>
+
+	<!-- 定义数据源 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 定义映射文件 -->
+	<mappers>
+		<!-- <package name="com.mybatis.mapper" /> -->
+		<mapper resource="com/mybatis/mapper/BlogMapper.xml" />
+	</mappers>
+</configuration>

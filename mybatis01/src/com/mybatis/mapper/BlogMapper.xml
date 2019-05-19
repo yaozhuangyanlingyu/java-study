@@ -4,6 +4,13 @@
 
 <mapper namespace="com.mybatis.mapper.BlogMapper">
 	<select id="selectBlog" parameterType="int" resultType="Blog">
-		select * from t_blog where id = #{id}
+		select
+			`id`,
+			`title`,
+			`author_id` AS AuthorId,
+			`state`,
+			`featured`,
+			`style`
+		from t_blog where id = #{id}
 	</select>
 </mapper>
