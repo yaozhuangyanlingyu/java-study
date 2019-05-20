@@ -13,4 +13,8 @@
 			`style`
 		from t_blog where id = #{id}
 	</select>
+	
+	<select id="selectBlogByTitle" parameterType="string" resultType="Blog">
+		select * from t_blog where title like #{id}
+	</select>
 </mapper>

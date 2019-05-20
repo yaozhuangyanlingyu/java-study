@@ -5,9 +5,11 @@ import org.junit.*;
 import com.mybatis.mapper.BlogMapper;
 import com.mybatis.pojo.*;
 import com.mybatis.util.*;
+import java.util.List;
 
 public class BlogMapperTest {
-	@Test
+	//@Test
+	// 查询不适用接口
 	public void testSelectBlogNoInterface() {
 		SqlSession session = MyBatisUtil.getSqlSession();
 		Blog blog = (Blog)session.selectOne("com.mybatis.mapper.BlogMapper.selectBlog", 1);
@@ -18,6 +20,7 @@ public class BlogMapperTest {
 	}
 	
 	//@Test
+	// 查询数据
 	public void testSelectBlog() {
 		SqlSession session = MyBatisUtil.getSqlSession();
 		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
@@ -25,5 +28,19 @@ public class BlogMapperTest {
 		session.close();
 
 		System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
+	}
+	
+	@Test
+	// like查询
+	public void testSelectLike() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		List<Blog> blogs = blogMapper.selectBlogByTitle("%分库%");
+		session.close();
+		
+		for(int i = 0; i < blogs.size(); i++) {
+			Blog blog = blogs.get(i);
+			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
+		}
 	}
 }
