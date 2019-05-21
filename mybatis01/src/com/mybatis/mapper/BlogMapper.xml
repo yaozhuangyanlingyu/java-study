@@ -34,4 +34,23 @@
 	<select id="selectBlogByPage3" resultType="Blog">
 		select * from t_blog limit #{offset}, #{pageSize}
 	</select>
+
+	<!-- 插入数据 -->
+	<insert id="insertBlog1" parameterType="Blog" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `t_blog`(
+			`title`,
+			`author_id`,
+			`state`,
+			`featured`,
+			`style`
+		)
+		VALUES
+		(
+			#{title},
+			#{authorId},
+			#{state},
+			#{featured},
+			#{style}
+		)
+	</insert>
 </mapper>

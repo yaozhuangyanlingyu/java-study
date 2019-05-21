@@ -23,4 +23,7 @@ public interface BlogMapper {
 	
 	// 多参数传递3
 	List<Blog> selectBlogByPage3(Map<String, Object> map);
+
+	// 插入数据1
+	int insertBlog1(Blog blog);
 }

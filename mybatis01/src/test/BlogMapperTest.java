@@ -83,7 +83,7 @@ public class BlogMapperTest {
 		session.close();
 	}
 	
-	@Test
+	//@Test
 	// 多参数方法3
 	public void testSelectByPage3() {
 		SqlSession session = MyBatisUtil.getSqlSession();
@@ -101,6 +101,25 @@ public class BlogMapperTest {
 			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
 		}
 		
+		session.close();
+	}
+	
+	@Test
+	// 插入数据方法1
+	public void testInsertBlog() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		
+		// 获得数据对象
+		Blog blog = new Blog();
+		blog.setTitle("JAVA从入门到精通");
+		blog.setAuthorId(1004);
+		blog.setState("编辑中");
+		blog.setFeatured(true);
+		blog.setStyle("green");
+		int count = blogMapper.insertBlog1(blog);
+		System.out.println("影响行数：" + count + " 插入ID为：" + blog.getId());
+
 		session.close();
 	}
 }
