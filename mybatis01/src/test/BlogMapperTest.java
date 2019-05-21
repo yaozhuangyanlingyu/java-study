@@ -5,7 +5,10 @@ import org.junit.*;
 import com.mybatis.mapper.BlogMapper;
 import com.mybatis.pojo.*;
 import com.mybatis.util.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BlogMapperTest {
 	//@Test
@@ -62,7 +65,7 @@ public class BlogMapperTest {
 		session.close();
 	}
 	
-	@Test
+	//@Test
 	// 多参数方法2
 	public void testSelectByPage2() {
 		SqlSession session = MyBatisUtil.getSqlSession();
@@ -71,6 +74,27 @@ public class BlogMapperTest {
 		// 根据mapper查询
 		List<Blog> blogs = blogMapper.selectBlogByPage2(2, 2);
 
+		// 输出结果
+		for(int i = 0; i < blogs.size(); i++) {
+			Blog blog = blogs.get(i);
+			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
+		}
+		
+		session.close();
+	}
+	
+	@Test
+	// 多参数方法3
+	public void testSelectByPage3() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		
+		// 根据mapper查询
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("offset", 2);
+		map.put("pageSize", 2);
+		List<Blog> blogs = blogMapper.selectBlogByPage3(map);
+		
 		// 输出结果
 		for(int i = 0; i < blogs.size(); i++) {
 			Blog blog = blogs.get(i);

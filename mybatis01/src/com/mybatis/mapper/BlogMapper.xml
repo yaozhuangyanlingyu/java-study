@@ -27,6 +27,11 @@
 	
 	<!-- 多参数查询2 -->
 	<select id="selectBlogByPage2" resultType="Blog">
-		select * from t_blog limit #{page}, #{pageSize}
+		select * from t_blog limit #{offset}, #{pageSize}
+	</select>
+	
+	<!-- 多参数查询3 -->
+	<select id="selectBlogByPage3" resultType="Blog">
+		select * from t_blog limit #{offset}, #{pageSize}
 	</select>
 </mapper>
