@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mybatis.mapper.BlogMapper">
+	<!-- 按照id查询 -->
 	<select id="selectBlog" parameterType="int" resultType="Blog">
 		select
 			`id`,
@@ -14,7 +15,18 @@
 		from t_blog where id = #{id}
 	</select>
 	
+	<!-- like查询 -->
 	<select id="selectBlogByTitle" parameterType="string" resultType="Blog">
 		select * from t_blog where title like #{id}
+	</select>
+	
+	<!-- 多参数查询1 -->
+	<select id="selectBlogByPage1" resultType="Blog">
+		select * from t_blog limit #{arg0}, #{arg1}
+	</select>
+	
+	<!-- 多参数查询2 -->
+	<select id="selectBlogByPage2" resultType="Blog">
+		select * from t_blog limit #{page}, #{pageSize}
 	</select>
 </mapper>

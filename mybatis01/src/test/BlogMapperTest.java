@@ -30,7 +30,7 @@ public class BlogMapperTest {
 		System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
 	}
 	
-	@Test
+	//@Test
 	// like查询
 	public void testSelectLike() {
 		SqlSession session = MyBatisUtil.getSqlSession();
@@ -42,5 +42,41 @@ public class BlogMapperTest {
 			Blog blog = blogs.get(i);
 			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
 		}
+	}
+
+	//@Test
+	// 多参数方法1
+	public void testSelectByPage1() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		
+		// 根据mapper查询
+		List<Blog> blogs = blogMapper.selectBlogByPage1(2, 2);
+
+		// 输出结果
+		for(int i = 0; i < blogs.size(); i++) {
+			Blog blog = blogs.get(i);
+			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
+		}
+		
+		session.close();
+	}
+	
+	@Test
+	// 多参数方法2
+	public void testSelectByPage2() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		
+		// 根据mapper查询
+		List<Blog> blogs = blogMapper.selectBlogByPage2(2, 2);
+
+		// 输出结果
+		for(int i = 0; i < blogs.size(); i++) {
+			Blog blog = blogs.get(i);
+			System.out.println("id: " + blog.getId() + " title: " + blog.getTitle() + " author_id: " + blog.getAuthorId() + " state: " + blog.getState() + " featured: " + blog.getFeatured() + " Style: " + blog.getStyle());
+		}
+		
+		session.close();
 	}
 }
