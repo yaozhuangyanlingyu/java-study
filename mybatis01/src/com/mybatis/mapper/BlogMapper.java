@@ -20,10 +20,16 @@ public interface BlogMapper {
 	List<Blog> selectBlogByPage2(
 			@Param(value="offset")int page,
 			@Param(value="pageSize")int pageSize);
-	
+
 	// 多参数传递3
 	List<Blog> selectBlogByPage3(Map<String, Object> map);
 
 	// 插入数据1
 	int insertBlog1(Blog blog);
+
+	// 更新数据
+	int updateBlog(Blog blog);
+
+	// 删除数据
+	int deleteBlog(int id);
 }

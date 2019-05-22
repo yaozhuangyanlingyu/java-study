@@ -5,34 +5,34 @@
 <mapper namespace="com.mybatis.mapper.BlogMapper">
 	<!-- 按照id查询 -->
 	<select id="selectBlog" parameterType="int" resultType="Blog">
-		select
+		SELECT
 			`id`,
 			`title`,
 			`author_id` AS AuthorId,
 			`state`,
 			`featured`,
 			`style`
-		from t_blog where id = #{id}
+		FROM t_blog WHERE id = #{id}
 	</select>
 	
 	<!-- like查询 -->
 	<select id="selectBlogByTitle" parameterType="string" resultType="Blog">
-		select * from t_blog where title like #{id}
+		SELECT * FROM t_blog WHERE title LIKE #{id}
 	</select>
 	
 	<!-- 多参数查询1 -->
 	<select id="selectBlogByPage1" resultType="Blog">
-		select * from t_blog limit #{arg0}, #{arg1}
+		SELECT * FROM t_blog LIMIT #{arg0}, #{arg1}
 	</select>
 	
 	<!-- 多参数查询2 -->
 	<select id="selectBlogByPage2" resultType="Blog">
-		select * from t_blog limit #{offset}, #{pageSize}
+		SELECT * FROM t_blog LIMIT #{offset}, #{pageSize}
 	</select>
 	
 	<!-- 多参数查询3 -->
 	<select id="selectBlogByPage3" resultType="Blog">
-		select * from t_blog limit #{offset}, #{pageSize}
+		SELECT * FROM t_blog LIMIT #{offset}, #{pageSize}
 	</select>
 
 	<!-- 插入数据 -->
@@ -53,4 +53,22 @@
 			#{style}
 		)
 	</insert>
+	
+	<!-- 更新数据 -->
+	<update id="updateBlog" parameterType="Blog">
+		UPDATE t_blog
+		<set>
+			<if test="title!=null">title=#{title},</if>
+			<if test="authorId!=null">author_id=#{authorId},</if>
+			<if test="state!=null">state=#{state},</if>
+			<if test="featured!=null">featured=#{featured},</if>
+			<if test="style!=null">style=#{style},</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 删除数据 -->
+	<delete id="deleteBlog" parameterType="int">
+		DELETE FROM t_blog WHERE id = #{id} LIMIT 1
+	</delete>
 </mapper>

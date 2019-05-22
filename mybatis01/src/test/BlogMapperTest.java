@@ -104,7 +104,7 @@ public class BlogMapperTest {
 		session.close();
 	}
 	
-	@Test
+	//@Test
 	// 插入数据方法1
 	public void testInsertBlog() {
 		SqlSession session = MyBatisUtil.getSqlSession();
@@ -120,6 +120,36 @@ public class BlogMapperTest {
 		int count = blogMapper.insertBlog1(blog);
 		System.out.println("影响行数：" + count + " 插入ID为：" + blog.getId());
 
+		session.close();
+	}
+	
+	//@Test
+	// 更新数据
+	public void testUpdateBlog() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+
+		// 获得数据对象
+		Blog blog = new Blog();
+		blog.setId(6);
+		blog.setTitle("Nginx高级进阶");
+		blog.setAuthorId(105);
+		int count = blogMapper.updateBlog(blog);
+		System.out.println("影响行数：" + count);
+
+		session.close();
+	}
+	
+	@Test
+	// 删除数据
+	public void testDeleteBlog() {
+		SqlSession session = MyBatisUtil.getSqlSession();
+		BlogMapper blogMapper = session.getMapper(BlogMapper.class);
+		
+		// 删除数据
+		int count = blogMapper.deleteBlog(6);
+		System.out.println("影响行数：" + count);
+		
 		session.close();
 	}
 }
