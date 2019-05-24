@@ -1,4 +1,4 @@
-package com.hello.spring.pojo;
+ï»¿package com.hello.spring.pojo;
 
 public class Persion {
 
@@ -7,7 +7,7 @@ public class Persion {
 	
 	public Persion() {
 		super();
-		System.out.println("¹¹Ôì·½·¨±»µ÷ÓÃÁË");
+		System.out.println("æž„é€ æ–¹æ³•è¢«è°ƒç”¨äº†");
 	}
 
 	public String getName() {

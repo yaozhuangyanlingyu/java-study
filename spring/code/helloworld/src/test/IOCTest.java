@@ -1,4 +1,4 @@
-package test;
+ï»¿package test;
 
 import org.junit.Test;
 import com.hello.spring.pojo.Persion;
@@ -9,24 +9,24 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class IOCTest {
 
 	@Test
-	// Í¨¹ıÈİÆ÷»ñÈ¡¶ÔÏóÊµÀı
-	// ËµÃ÷£ºÍ¨¹ıÊä³ö¿ÉÒÔ¿´³öÀ´£¬¹¹Ôì·½·¨Ö»±»µ÷ÓÃÁË1´Î£¬ËµÃ÷»ñÈ¡·½·¨µÄ·½Ê½ÊÇµ¥ÀıµÄ
+	// é€šè¿‡å®¹å™¨è·å–å¯¹è±¡å®ä¾‹
+	// è¯´æ˜ï¼šé€šè¿‡è¾“å‡ºå¯ä»¥çœ‹å‡ºæ¥ï¼Œæ„é€ æ–¹æ³•åªè¢«è°ƒç”¨äº†1æ¬¡ï¼Œè¯´æ˜è·å–æ–¹æ³•çš„æ–¹å¼æ˜¯å•ä¾‹çš„
 	public void testCreatePersion1() {
-		// ´´½¨ÈİÆ÷
+		// åˆ›å»ºå®¹å™¨
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		// ²éÕÒ¶ÔÏó
+		// æŸ¥æ‰¾å¯¹è±¡
 		Persion p1 = (Persion)context.getBean("p1");
 		Persion p2 = (Persion)context.getBean("p2");
 
-		// Êä³ö¶ÔÏó
+		// è¾“å‡ºå¯¹è±¡
 		System.out.println(p1);
 		System.out.println(p2);
 	}
 	
 	@Test
-	// Í¨¹ıÁíÒ»ÖÖ¶ÔÏóÀ´¹¹½¨ÈİÆ÷
-	// ËµÃ÷£º1¡¢¼ÓÔØÅäÖÃÎÄ¼şÊ¹ÓÃ¾ø¶ÔÂ·¾¶»ñÈ¡ 2¡¢Ê¹ÓÃ¸Ã·½·¨´´½¨ÈİÆ÷£¬·¢ÏÖÈİÆ÷³õÊ¼»¯µÄÊ±ºò£¬¾ÍÒÑ¾­´´½¨ºÃ¶ÔÏóÁË£¬²¢ÇÒÊÇµ¥ÀıµÄ£¬ÕâÊÇÄ¬ÈÏÌØĞÔ
+	// é€šè¿‡å¦ä¸€ç§å¯¹è±¡æ¥æ„å»ºå®¹å™¨
+	// è¯´æ˜ï¼š1ã€åŠ è½½é…ç½®æ–‡ä»¶ä½¿ç”¨ç»å¯¹è·¯å¾„è·å– 2ã€ä½¿ç”¨è¯¥æ–¹æ³•åˆ›å»ºå®¹å™¨ï¼Œå‘ç°å®¹å™¨åˆå§‹åŒ–çš„æ—¶å€™ï¼Œå°±å·²ç»åˆ›å»ºå¥½å¯¹è±¡äº†ï¼Œå¹¶ä¸”æ˜¯å•ä¾‹çš„ï¼Œè¿™æ˜¯é»˜è®¤ç‰¹æ€§
 	public void testCreatePersion2() {
 		ApplicationContext context = new FileSystemXmlApplicationContext("D:\\java-study\\spring\\code\\helloworld\\src\\applicationContext.xml");
 	}
