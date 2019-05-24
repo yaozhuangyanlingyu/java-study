@@ -9,6 +9,14 @@ public class Persion {
 		super();
 		System.out.println("构造方法被调用了");
 	}
+	
+	public void init() {
+		System.out.println("我是初始化方法");
+	}
+	
+	public void destroy() {
+		System.out.println("我是销毁方法");
+	}
 
 	public String getName() {
 		return name;

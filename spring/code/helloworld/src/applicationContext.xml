@@ -7,6 +7,6 @@
 	<!-- name: 相当于变量名 Persion p = new Persion(); -->
 	<!-- class：类的全限定名 -->
 	<!-- name: 可以重复，可以有特殊字符，id：不可以重复，不可以有特殊字符 -->
-	<bean name="p1" id="p2" class="com.hello.spring.pojo.Persion"></bean>
+	<bean name="p1" id="p2" class="com.hello.spring.pojo.Persion" scope="singleton" init-method="init" destroy-method="destroy"></bean>
 
 </beans>
