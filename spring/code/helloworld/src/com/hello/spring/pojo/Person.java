@@ -1,11 +1,11 @@
 ﻿package com.hello.spring.pojo;
 
-public class Persion {
+public class Person {
 
 	private String name;
 	private Integer age;
 	
-	public Persion() {
+	public Person() {
 		super();
 		System.out.println("构造方法被调用了");
 	}
