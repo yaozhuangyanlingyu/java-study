@@ -36,6 +36,6 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Persion [name=" + name + ", age=" + age + "]";
+		return "Person [name=" + name + ", age=" + age + "]";
 	}
 }
