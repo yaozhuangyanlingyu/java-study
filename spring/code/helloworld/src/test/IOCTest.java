@@ -3,6 +3,7 @@
 import org.junit.Test;
 import com.hello.spring.pojo.Person;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -31,7 +32,7 @@ public class IOCTest {
 		ApplicationContext context = new FileSystemXmlApplicationContext("D:\\java-study\\spring\\code\\helloworld\\src\\applicationContext.xml");
 	}
 	
-	@Test
+	//@Test
 	// 单利测试
 	public void testSimpleInterest() {
 		// 创建容器
@@ -60,5 +61,25 @@ public class IOCTest {
 		// 销毁需要手动调用，或者执行对象.close，没测试成功
 		//Person p1 = (Person)context.getBean("p1");
 		// p1.destroy();
+	}
+	
+	//@Test
+	// 通过静态工厂获取Person
+	public void testFactoryCreatePerson1() {
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context.close();
+
+		Person p3 = (Person)context.getBean("p3");
+		System.out.println(p3);
+	}
+	
+	@Test
+	// 通过实例工厂获取Person
+	public void testFactoryCreatePerson2() {
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context.close();
+
+		Person p4 = (Person)context.getBean("p4");
+		System.out.println(p4);
 	}
 }

@@ -9,4 +9,10 @@
 	<!-- name: 可以重复，可以有特殊字符，id：不可以重复，不可以有特殊字符 -->
 	<bean name="p1" id="p2" class="com.hello.spring.pojo.Person" scope="singleton" init-method="init" destroy-method="destroy"></bean>
 
+	<!-- 通过静态工厂获得类 -->
+	<bean name="p3" class="com.hello.spring.factory.PersonFactory" factory-method="createPerson1"></bean>
+
+	<!-- 通过实例获取类 -->
+	<bean name="personFactory" class="com.hello.spring.factory.PersonFactory"></bean>
+	<bean name="p4" factory-bean="personFactory" factory-method="createPerson2"></bean>
 </beans>

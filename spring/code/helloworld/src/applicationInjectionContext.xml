@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- car对象 -->
+	<bean id="car" class="com.hello.spring.pojo.Car">
+		<property name="name" value="奥迪A8"></property>
+		<property name="color" value="蓝色"></property>
+	</bean>
+
+	<!-- 注入方式获取 Person 对象 -->
+	<bean id="p1" class="com.hello.spring.pojo.Person">
+		<property name="name" value="西门吹雪"></property>
+		<property name="age" value="18"></property>
+		<property name="car" ref="car"></property>
+	</bean>
+</beans>
