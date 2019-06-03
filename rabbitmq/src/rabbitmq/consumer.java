@@ -1,9 +1,11 @@
 package rabbitmq;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -17,7 +19,7 @@ import com.rabbitmq.client.Envelope;
  * @author yaoxf8888@gmail.com
  * @date 2019.06.01
  */
-public class consumer {
+public class Consumer {
 
 	@Test
 	public void test() throws Exception {
@@ -25,8 +27,10 @@ public class consumer {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("192.168.107.102");
 		connectionFactory.setPort(5672);
-		connectionFactory.setVirtualHost("/");
-		
+		connectionFactory.setVirtualHost("shop");
+		connectionFactory.setUsername("yaoxf");
+		connectionFactory.setPassword("123456");
+
 		// 2 获取connection
 		Connection connection = connectionFactory.newConnection();
 		
@@ -44,19 +48,29 @@ public class consumer {
 
 		// -- 交换器声明
 		channel.exchangeDeclare(exchangeName, routerType, isPersistence);
-		// -- 队列声明
+
+		// -- 队列声明 
 		channel.queueDeclare(queueName, isPersistence, isExclusive, autoDelete, null);
-		// -- 绑定交换器和队列
-		channel.queueBind(exchangeName, queueName, routingKey);
-		
+
+		// -- 队列绑定
+		channel.queueBind(queueName, exchangeName, routingKey);
+
 		// 5 创建消费者
-		Consumer consumer = new DefaultConsumer(channel) {
-			public void hanndelDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
-				String msg = new String(body);
-				System.out.println("consumer received message: " + msg);
-			}
-		};
-		/* 1.队列名称 2.是否发送ack 3.消费者 */
-		channel.basicConsume(queueName, true, consumer);
+        DefaultConsumer consumer  = new DefaultConsumer(channel) {
+            public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("接收消息 :   "+new String(body));
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+ 
+                //消息确认
+                channel.basicAck(envelope.getDeliveryTag(), false);
+            }
+        };
+        channel.basicConsume(queueName, false, "ConsumerTag", consumer);
+        System.out.println("Consumer end");
+        connection.close();
 	}
 }
