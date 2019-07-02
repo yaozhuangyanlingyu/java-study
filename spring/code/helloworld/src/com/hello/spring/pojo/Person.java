@@ -1,11 +1,64 @@
 ﻿package com.hello.spring.pojo;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 public class Person {
 
 	private String name;
 	private Integer age;
 	private Car car;
 	
+	// 复杂类型
+	private Object[] carts;				// 数组类型的注入
+	private List list;					// list类型注入
+	private Set set;					// set类型注入
+	private Map map;					// map类型注入
+	private Properties properties;		// properties类型的注入
+
+	public Object[] getCarts() {
+		return carts;
+	}
+
+	public void setCarts(Object[] carts) {
+		this.carts = carts;
+	}
+
+	public List getList() {
+		return list;
+	}
+
+	public void setList(List list) {
+		this.list = list;
+	}
+
+	public Set getSet() {
+		return set;
+	}
+
+	public void setSet(Set set) {
+		this.set = set;
+	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
+
+	public Properties getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Properties properties) {
+		this.properties = properties;
+	}
+
 	public Car getCar() {
 		return car;
 	}
@@ -45,6 +98,11 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", age=" + age + "]";
+		return "Person [name=" + name + ", age=" + age + ", car=" + car + ", carts=" + Arrays.toString(carts)
+				+ ", list=" + list + ", set=" + set + ", map=" + map + ", properties=" + properties + ", getCarts()="
+				+ Arrays.toString(getCarts()) + ", getList()=" + getList() + ", getSet()=" + getSet() + ", getMap()="
+				+ getMap() + ", getProperties()=" + getProperties() + ", getCar()=" + getCar() + ", getName()="
+				+ getName() + ", getAge()=" + getAge() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
 }

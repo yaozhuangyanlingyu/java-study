@@ -19,4 +19,63 @@
 	
 	<!-- 名称空间注入 -->
 	<bean name="person3" class="com.hello.spring.pojo.Person" p:name="姚晓丰" p:age="18" p:car-ref="car"></bean>
+	
+	<!-- el表达式注入 -->
+	<bean name="person4" class="com.hello.spring.pojo.Person">
+		<property name="name" value="#{p1.name}"></property>
+		<property name="age" value="#{p1.age}"></property>
+		<property name="car" ref="car"></property>
+	</bean>
+	
+	<!-- 复杂类型注入 -->
+	<bean name="person5" class="com.hello.spring.pojo.Person">
+		<property name="name" value="姚丽娟"></property>
+		<property name="age" value="28"></property>
+		<property name="car" ref="car"></property>
+	
+		<!-- 数组 -->
+		<property name="carts">
+			<array>
+				<value>自行车</value>
+				<value>摩托车</value>
+				<value>火车</value>
+			</array>
+		</property>
+		
+		<!-- list -->
+		<property name="list">
+			<list>
+				<value>毛晓璐</value>
+				<value>朱彩娟</value>
+				<value>江雨薇</value>
+			</list>
+		</property>
+		
+		<!-- set -->
+		<property name="set">
+			<set>
+				<value>巴菲特</value>
+				<value>林园</value>
+				<value>乔治-索罗斯</value>
+			</set>
+		</property>
+		
+		<!-- map -->
+		<property name="map">
+			<map>
+				<entry key="min_yw" value="100w"></entry>
+				<entry key="mid_yw" value="500w"></entry>
+				<entry key="max_yw" value="1000w"></entry>
+				<entry key-ref="p1" value-ref="car"></entry>
+			</map>
+		</property>
+		
+		<!-- properties -->
+		<property name="properties">
+			<props>
+				<prop key="username">root</prop>
+				<prop key="passwd">123456</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
