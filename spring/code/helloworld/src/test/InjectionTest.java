@@ -7,7 +7,7 @@ import com.hello.spring.pojo.Person;
 
 public class InjectionTest {
 
-	@Test
+	//@Test
 	public void testCreatePerson1() {
 		// 创建容器
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationInjectionContext.xml");
@@ -16,6 +16,19 @@ public class InjectionTest {
 		Person p1 = (Person)context.getBean("p1");
 		System.out.println(p1);
 
+		// 关闭销毁容器
+		context.close();
+	}
+	
+	@Test
+	public void testP() {
+		// 创建容器
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationInjectionContext.xml");
+		
+		// 输出对象
+		Person p3 = (Person)context.getBean("person3");
+		System.out.println(p3);
+		
 		// 关闭销毁容器
 		context.close();
 	}

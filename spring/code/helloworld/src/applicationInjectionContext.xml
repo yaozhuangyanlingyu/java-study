@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- car对象 -->
@@ -15,4 +16,7 @@
 		<property name="age" value="18"></property>
 		<property name="car" ref="car"></property>
 	</bean>
+	
+	<!-- 名称空间注入 -->
+	<bean name="person3" class="com.hello.spring.pojo.Person" p:name="姚晓丰" p:age="18" p:car-ref="car"></bean>
 </beans>
