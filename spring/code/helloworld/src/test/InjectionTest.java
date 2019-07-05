@@ -21,7 +21,7 @@ public class InjectionTest {
 	}
 	
 	@Test
-	public void testP() {
+	public void testCreatePerson3() {
 		// 创建容器
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationInjectionContext.xml");
 		
