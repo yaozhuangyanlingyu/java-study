@@ -12,13 +12,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
+            <groupId>springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.2.RELEASE</version>
+            <version>5.1.7.RELEASE</version>
         </dependency>
 
         <dependency>
-            <groupId>org.aspectj</groupId>
+            <groupId>aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.7</version>
         </dependency>
