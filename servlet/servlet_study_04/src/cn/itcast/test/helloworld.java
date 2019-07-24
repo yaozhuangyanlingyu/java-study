@@ -5,6 +5,14 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * urlPartten
+ * @WebServlet("/d4", "/dd4", "ddd4");  // 多地址匹配一个资源
+ * @WebServlet("/user/demo");           // 长地址定位资源
+ * @WebServlet("/user/*");              // 模糊匹配资源
+ * @WebServlet("/*");                   // 所有地址都匹配资源
+ * @WebServlet("*.do");                 // 后缀匹配资源
+ */
 public class helloworld extends HttpServlet {
     private String message;
 
